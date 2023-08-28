@@ -101,6 +101,9 @@
 		D87CE4E92A9C967900DB013E /* DayByDay */ = {
 			isa = PBXGroup;
 			children = (
+				D87CE51F2A9CB82F00DB013E /* Controllers */,
+				D87CE51E2A9CB82900DB013E /* Views */,
+				D87CE51D2A9CB80900DB013E /* Models */,
 				D87CE4EA2A9C967900DB013E /* AppDelegate.swift */,
 				D87CE4EC2A9C967900DB013E /* SceneDelegate.swift */,
 				D87CE4EE2A9C967900DB013E /* ViewController.swift */,
@@ -128,6 +131,27 @@
 				D87CE5102A9C967A00DB013E /* DayByDayUITestsLaunchTests.swift */,
 			);
 			path = DayByDayUITests;
+			sourceTree = "<group>";
+		};
+		D87CE51D2A9CB80900DB013E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D87CE51E2A9CB82900DB013E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D87CE51F2A9CB82F00DB013E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
