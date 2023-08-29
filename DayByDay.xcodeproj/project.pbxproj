@@ -101,13 +101,13 @@
 		D87CE4E92A9C967900DB013E /* DayByDay */ = {
 			isa = PBXGroup;
 			children = (
-				D87CE51F2A9CB82F00DB013E /* Controllers */,
-				D87CE51E2A9CB82900DB013E /* Views */,
-				D87CE51D2A9CB80900DB013E /* Models */,
 				D87CE4EA2A9C967900DB013E /* AppDelegate.swift */,
 				D87CE4EC2A9C967900DB013E /* SceneDelegate.swift */,
-				D87CE4EE2A9C967900DB013E /* ViewController.swift */,
 				D87CE4F02A9C967900DB013E /* Main.storyboard */,
+				D87CE5212A9D03F200DB013E /* LandingPage */,
+				D87CE5242A9D03F800DB013E /* FuturePage */,
+				D87CE5232A9D03F600DB013E /* PastPage */,
+				D87CE5222A9D03F400DB013E /* TodayPage */,
 				D87CE4F62A9C967A00DB013E /* Assets.xcassets */,
 				D87CE4F82A9C967A00DB013E /* LaunchScreen.storyboard */,
 				D87CE4FB2A9C967A00DB013E /* Info.plist */,
@@ -133,25 +133,33 @@
 			path = DayByDayUITests;
 			sourceTree = "<group>";
 		};
-		D87CE51D2A9CB80900DB013E /* Models */ = {
+		D87CE5212A9D03F200DB013E /* LandingPage */ = {
 			isa = PBXGroup;
 			children = (
+				D87CE4EE2A9C967900DB013E /* ViewController.swift */,
 			);
-			path = Models;
+			path = LandingPage;
 			sourceTree = "<group>";
 		};
-		D87CE51E2A9CB82900DB013E /* Views */ = {
+		D87CE5222A9D03F400DB013E /* TodayPage */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Views;
+			path = TodayPage;
 			sourceTree = "<group>";
 		};
-		D87CE51F2A9CB82F00DB013E /* Controllers */ = {
+		D87CE5232A9D03F600DB013E /* PastPage */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Controllers;
+			path = PastPage;
+			sourceTree = "<group>";
+		};
+		D87CE5242A9D03F800DB013E /* FuturePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FuturePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
