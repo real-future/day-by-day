@@ -11,6 +11,5 @@ struct ColorThemeModel {
         "https://i.ibb.co/cDVB83q/background-daytime.png",
         "https://i.ibb.co/5khdtP0/background-night.png",
         "https://i.ibb.co/9YKJ39W/background-twilight.png",
-        "https://spartacodingclub.kr/css/images/scc-og.jpg"
     ]
 }

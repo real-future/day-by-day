@@ -17,8 +17,9 @@ class LandingPageViewController: UIViewController {
     let backgroundImageView = UIImageView()
     let titleLabel = UILabel()
     //let colorTitleLabel = UILabel()✅ 시간 나면 꼭 구현해보기
-    let colorsimageViews = [UIImageView(), UIImageView(), UIImageView(), UIImageView()]
+    let colorsimageViews = [UIImageView(), UIImageView(), UIImageView()]
     let colorThemeModel = ColorThemeModel()
+    let nextButton = UIButton()
   
     
     
@@ -28,6 +29,7 @@ class LandingPageViewController: UIViewController {
         SetupBackgroundImage.setupBackgroundImageView(imageView: backgroundImageView, view: self.view)
         setupTitleLabel()
         setupImageViews()
+        setupNextButton()
         setupConstraints()
     }
     
@@ -109,6 +111,42 @@ class LandingPageViewController: UIViewController {
             loadImage(for: backgroundImageView, with: colorThemeModel.imageUrls[imageView.tag])
         }
     }
+    
+    //다음 화면으로 넘어가는 버튼
+    private func setupNextButton() {
+        nextButton.backgroundColor = .white.withAlphaComponent(0.1)
+        nextButton.setTitle("RUN", for: .normal)
+        nextButton.layer.cornerRadius = 40 // 80 / 2
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        
+        self.view.addSubview(nextButton)
+        
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nextButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
+            nextButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
+            nextButton.widthAnchor.constraint(equalToConstant: 80),
+            nextButton.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+    
+    
+    //버튼 액션에 user defaults , 화면 전환
+    @objc private func nextButtonTapped() {
+        if let currentBackgroundImageUrl = backgroundImageView.image?.accessibilityIdentifier {
+            UserDefaults.standard.set(currentBackgroundImageUrl, forKey: "selectedBackgroundImage")
+        }
+        
+        
+        // 화면 전환 (present 방식)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
+            // present 방식으로 화면 전환
+            nextViewController.modalPresentationStyle = .fullScreen // 전체 화면으로 표시하려면 추가
+            self.present(nextViewController, animated: true, completion: nil)
+        }
+    }
+    
     
     
     //오토레이아웃 설정
