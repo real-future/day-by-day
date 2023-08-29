@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--PAST-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="PastPageViewController" id="Y6W-OH-hqX" customClass="PastPageViewController" customModule="DayByDay" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="jxV-jN-eVS"/>
+                    <tabBarItem key="tabBarItem" title="PAST" image="minus" catalog="system" selectedImage="minus" id="jxV-jN-eVS">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -28,6 +30,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="minus" catalog="system" width="128" height="26"/>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

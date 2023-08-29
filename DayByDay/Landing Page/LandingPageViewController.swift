@@ -13,6 +13,7 @@ import UIKit
 
 class LandingPageViewController: UIViewController {
     
+    //🔴클로저로 바꾸기~~!!
     //UI 요소 인스턴스 만들기
     let backgroundImageView = UIImageView()
     let titleLabel = UILabel()
@@ -20,7 +21,7 @@ class LandingPageViewController: UIViewController {
     let colorsimageViews = [UIImageView(), UIImageView(), UIImageView()]
     let colorThemeModel = ColorThemeModel()
     let nextButton = UIButton()
-  
+    
     
     
     //화면 그려질 때 처음 한 번 실행되는 함수
@@ -31,6 +32,7 @@ class LandingPageViewController: UIViewController {
         setupImageViews()
         setupNextButton()
         setupConstraints()
+        
     }
     
     
@@ -84,6 +86,12 @@ class LandingPageViewController: UIViewController {
             //블러효과 추가하기
             backgroundImageView.addSubview(blurEffectView)
             
+            // UserDefaults에서 저장된 배경 이미지 URL을 불러옴
+            if let savedBackgroundImageUrl = UserDefaults.standard.string(forKey: "selectedBackgroundImage") {
+                print("Saved background image URL: \(savedBackgroundImageUrl)")  // 디버그 출력
+                loadImage(for: backgroundImageView, with: savedBackgroundImageUrl)
+            }
+            
         }
     }
     
@@ -108,7 +116,11 @@ class LandingPageViewController: UIViewController {
     //컬러 고르는 이미지뷰 눌렀을 때, 실행되는 메서드
     @objc private func imageTapped(_ sender: UITapGestureRecognizer) {
         if let imageView = sender.view as? UIImageView {
-            loadImage(for: backgroundImageView, with: colorThemeModel.imageUrls[imageView.tag])
+            let selectedUrl = colorThemeModel.imageUrls[imageView.tag]
+            print("Selected URL: \(selectedUrl)")  // 디버그 출력
+            
+            backgroundImageView.image = imageView.image
+            backgroundImageView.accessibilityIdentifier = selectedUrl
         }
     }
     
@@ -133,7 +145,9 @@ class LandingPageViewController: UIViewController {
     
     //버튼 액션에 user defaults , 화면 전환
     @objc private func nextButtonTapped() {
-        if let currentBackgroundImageUrl = backgroundImageView.image?.accessibilityIdentifier {
+        print("Accessibility Identifier: \(String(describing: backgroundImageView.accessibilityIdentifier))")  // 디버그 출력
+        if let currentBackgroundImageUrl = backgroundImageView.accessibilityIdentifier {
+            print("Saving: \(currentBackgroundImageUrl)")  // 디버그 출력
             UserDefaults.standard.set(currentBackgroundImageUrl, forKey: "selectedBackgroundImage")
         }
         

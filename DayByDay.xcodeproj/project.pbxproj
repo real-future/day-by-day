@@ -20,6 +20,7 @@
 		D81462FC2A9DC5E80089B030 /* TodayPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81462FB2A9DC5E80089B030 /* TodayPageViewController.swift */; };
 		D81462FE2A9DC5F30089B030 /* FuturePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81462FD2A9DC5F30089B030 /* FuturePageViewController.swift */; };
 		D81463002A9DC5FC0089B030 /* PastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81462FF2A9DC5FC0089B030 /* PastPageViewController.swift */; };
+		D81463022A9DE48A0089B030 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81463012A9DE48A0089B030 /* TodayTableViewCell.swift */; };
 		D87CE4EB2A9C967900DB013E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87CE4EA2A9C967900DB013E /* AppDelegate.swift */; };
 		D87CE4ED2A9C967900DB013E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87CE4EC2A9C967900DB013E /* SceneDelegate.swift */; };
 		D87CE4EF2A9C967900DB013E /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87CE4EE2A9C967900DB013E /* LandingPageViewController.swift */; };
@@ -63,6 +64,7 @@
 		D81462FB2A9DC5E80089B030 /* TodayPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPageViewController.swift; sourceTree = "<group>"; };
 		D81462FD2A9DC5F30089B030 /* FuturePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuturePageViewController.swift; sourceTree = "<group>"; };
 		D81462FF2A9DC5FC0089B030 /* PastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastPageViewController.swift; sourceTree = "<group>"; };
+		D81463012A9DE48A0089B030 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		D87CE4E72A9C967900DB013E /* DayByDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayByDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87CE4EA2A9C967900DB013E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D87CE4EC2A9C967900DB013E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				D81462F52A9DC5A80089B030 /* TodayPage.storyboard */,
 				D81462FB2A9DC5E80089B030 /* TodayPageViewController.swift */,
+				D81463012A9DE48A0089B030 /* TodayTableViewCell.swift */,
 			);
 			path = "Today Page";
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				D87CE4EF2A9C967900DB013E /* LandingPageViewController.swift in Sources */,
 				D87CE4EB2A9C967900DB013E /* AppDelegate.swift in Sources */,
 				D81462EA2A9DBD000089B030 /* TodoData+CoreDataClass.swift in Sources */,
+				D81463022A9DE48A0089B030 /* TodayTableViewCell.swift in Sources */,
 				D81462FE2A9DC5F30089B030 /* FuturePageViewController.swift in Sources */,
 				D87CE4ED2A9C967900DB013E /* SceneDelegate.swift in Sources */,
 				D81462E92A9DBD000089B030 /* TodoData+CoreDataProperties.swift in Sources */,
