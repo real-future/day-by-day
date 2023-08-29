@@ -101,6 +101,7 @@ class ViewController: UIViewController {
     
     
     //이미지뷰에 이미지 로드
+    //✅시간나면 error 정의도 해보기
     private func loadImage(for imageView: UIImageView, with urlString: String) {
         //URL 객체 생성
         if let url = URL(string: urlString) {
