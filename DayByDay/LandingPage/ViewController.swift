@@ -17,11 +17,12 @@ class ViewController: UIViewController {
     let backgroundImageView = UIImageView()
     let titleLabel = UILabel()
     //let colorTitleLabel = UILabel()✅ 시간 나면 꼭 구현해보기
-    let colorsimageViews = [UIImageView(), UIImageView(), UIImageView()]
+    let colorsimageViews = [UIImageView(), UIImageView(), UIImageView(), UIImageView()]
     let imageUrls = [
         "https://i.ibb.co/cDVB83q/background-daytime.png",
         "https://i.ibb.co/5khdtP0/background-night.png",
-        "https://i.ibb.co/9YKJ39W/background-twilight.png"
+        "https://i.ibb.co/9YKJ39W/background-twilight.png",
+        "https://spartacodingclub.kr/css/images/scc-og.jpg"
     ]
     
     
@@ -76,11 +77,25 @@ class ViewController: UIViewController {
             //이미지뷰에 해당하는 URL 연결
             loadImage(for: imageView, with: imageUrls[index])
             
-            //
+            //제스처 인식기 생성, self는 ViewController를 뜻함
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
             imageView.addGestureRecognizer(tapGesture)
+            //탭 제스쳐 활성화. (기본적으로 비활성화 되어 있음 풀어줘야해)
             imageView.isUserInteractionEnabled = true
             self.view.addSubview(imageView)
+            
+            //블러효과 : dark
+            let blurEffect = UIBlurEffect(style: .dark)
+            //블러효과 화면 생성
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //블러효과 투명도
+            blurEffectView.alpha = 0.2
+            //블러효과 크기는 화면에 가득 차도록
+            blurEffectView.frame = backgroundImageView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            //블러효과 추가하기
+            backgroundImageView.addSubview(blurEffectView)
+            
         }
     }
     
