@@ -11,40 +11,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LandingPageViewController: UIViewController {
     
     //UI 요소 인스턴스 만들기
     let backgroundImageView = UIImageView()
     let titleLabel = UILabel()
     //let colorTitleLabel = UILabel()✅ 시간 나면 꼭 구현해보기
     let colorsimageViews = [UIImageView(), UIImageView(), UIImageView(), UIImageView()]
-    let imageUrls = [
-        "https://i.ibb.co/cDVB83q/background-daytime.png",
-        "https://i.ibb.co/5khdtP0/background-night.png",
-        "https://i.ibb.co/9YKJ39W/background-twilight.png",
-        "https://spartacodingclub.kr/css/images/scc-og.jpg"
-    ]
+    let colorThemeModel = ColorThemeModel()
+  
     
     
     //화면 그려질 때 처음 한 번 실행되는 함수
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBackgroundImageView()
+        SetupBackgroundImage.setupBackgroundImageView(imageView: backgroundImageView, view: self.view)
         setupTitleLabel()
         setupImageViews()
         setupConstraints()
     }
     
-    
-    //배경 이미지뷰 설정 함수
-    private func setupBackgroundImageView() {
-        //배경이 앱 화면 가득 차도록 설정
-        backgroundImageView.frame = self.view.bounds
-        //이미지 삽입 설정
-        backgroundImageView.contentMode = .scaleAspectFill
-        //화면에 추가. 여기서 self는 ViewController 인스턴스
-        self.view.addSubview(backgroundImageView)
-    }
     
     
     //타이틀 라벨 설정 함수
@@ -75,7 +61,7 @@ class ViewController: UIViewController {
             imageView.clipsToBounds = true
             
             //이미지뷰에 해당하는 URL 연결
-            loadImage(for: imageView, with: imageUrls[index])
+            loadImage(for: imageView, with: colorThemeModel.imageUrls[index])
             
             //제스처 인식기 생성, self는 ViewController를 뜻함
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
@@ -120,7 +106,7 @@ class ViewController: UIViewController {
     //컬러 고르는 이미지뷰 눌렀을 때, 실행되는 메서드
     @objc private func imageTapped(_ sender: UITapGestureRecognizer) {
         if let imageView = sender.view as? UIImageView {
-            loadImage(for: backgroundImageView, with: imageUrls[imageView.tag])
+            loadImage(for: backgroundImageView, with: colorThemeModel.imageUrls[imageView.tag])
         }
     }
     
