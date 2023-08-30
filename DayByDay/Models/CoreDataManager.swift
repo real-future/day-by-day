@@ -43,13 +43,7 @@ final class CoreDataManager {
         
         
         self.todoList[index].isCompleted =  isCompleted
-        //guard let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) else { return }
-        
-        //let todo = NSManagedObject(entity: entity, insertInto: context) as? TodoData
-        
-        
-//        todo?.isCompleted = isCompleted
-        
+
         
         if context.hasChanges {
             do {
@@ -62,6 +56,28 @@ final class CoreDataManager {
         }
     }
     
+    func deleteTodoData(at index: Int, completion: @escaping () -> Void) {
+            let context = appDelegate.persistentContainer.viewContext
+
+            // 인덱스에 위치한 TodoData를 가져옴
+            let todoDataToDelete = todoList[index]
+            
+            // 해당 TodoData를 Core Data의 Context에서 삭제
+            context.delete(todoDataToDelete)
+            
+            // todoList 배열에서도 해당 TodoData를 삭제
+            todoList.remove(at: index)
+            
+            // Context에 변경이 있을 경우 저장
+            if context.hasChanges {
+                do {
+                    try context.save()
+                    completion() // 완료 후 실행할 작업 
+                } catch {
+                    print(error)
+                }
+            }
+        }
     
     
     //    func getTodoListFromCoreData() -> [TodoData] {

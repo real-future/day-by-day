@@ -154,7 +154,9 @@ class TodayPageViewController: UIViewController {
     
     func setupTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
+        
     }
     
     
@@ -186,3 +188,14 @@ extension TodayPageViewController: UITableViewDataSource {
 }
 
 
+extension TodayPageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete {
+               // 코어 데이터에서 삭제
+               todoDataManager.deleteTodoData(at: indexPath.row) {
+                   // 테이블 뷰에서 삭제
+                   tableView.deleteRows(at: [indexPath], with: .automatic)
+               }
+           }
+       }
+}
