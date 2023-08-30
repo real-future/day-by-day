@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-wR-6Et">
-                                <rect key="frame" x="0.0" y="160" width="393" height="692"/>
+                                <rect key="frame" x="0.0" y="160" width="393" height="542"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" rowHeight="74" id="5BS-vx-HB6" customClass="TodayTableViewCell" customModule="DayByDay" customModuleProvider="target">
@@ -31,18 +31,22 @@
                                                     <rect key="frame" x="16" y="8" width="361" height="58"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="49c-M8-fdN">
-                                                            <rect key="frame" x="16" y="11.666666666666668" width="329" height="35"/>
+                                                            <rect key="frame" x="16" y="14" width="329" height="30"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZbZ-EZ-qPr">
-                                                                    <rect key="frame" x="0.0" y="2.3333333333333339" width="35" height="30.999999999999993"/>
-                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLD-gT-nlC">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="35" id="b6U-rl-ngt"/>
-                                                                        <constraint firstAttribute="height" constant="35" id="mc2-ER-Aji"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="CT3-Vv-GJq"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="LaT-zM-qqZ"/>
                                                                     </constraints>
-                                                                </imageView>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" image="checkmark" catalog="system" title=" "/>
+                                                                    <connections>
+                                                                        <action selector="pressedCheckButton:" destination="5BS-vx-HB6" eventType="touchUpInside" id="mxa-yN-ZWC"/>
+                                                                    </connections>
+                                                                </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-wn-cBa">
-                                                                    <rect key="frame" x="45" y="0.0" width="284" height="35"/>
+                                                                    <rect key="frame" x="40" y="0.0" width="289" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -71,7 +75,7 @@
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cellBoxView" destination="ojj-Wl-J4n" id="BOh-HD-AWv"/>
-                                            <outlet property="checkImage" destination="ZbZ-EZ-qPr" id="6xL-yv-4pg"/>
+                                            <outlet property="checkButton" destination="TLD-gT-nlC" id="RKG-jT-QIH"/>
                                             <outlet property="todoTitleLabel" destination="LxY-wn-cBa" id="sOX-I7-gOm"/>
                                         </connections>
                                     </tableViewCell>
@@ -97,15 +101,25 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="DA0-Ey-oGU">
+                                <rect key="frame" x="140" y="729" width="113.66666666666669" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="pressedCreateButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vod-Nv-Auo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DA0-Ey-oGU" firstAttribute="top" secondItem="iK0-wR-6Et" secondAttribute="bottom" constant="27" id="2Lv-X7-P7e"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="iK0-wR-6Et" secondAttribute="trailing" id="948-gt-XEf"/>
                             <constraint firstAttribute="trailing" secondItem="GLz-9x-5NF" secondAttribute="trailing" constant="16" id="DVT-a6-0jQ"/>
                             <constraint firstItem="iK0-wR-6Et" firstAttribute="top" secondItem="GLz-9x-5NF" secondAttribute="bottom" constant="20" id="PuF-qv-PrC"/>
                             <constraint firstItem="iK0-wR-6Et" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bsm-ew-IIV"/>
-                            <constraint firstAttribute="bottom" secondItem="iK0-wR-6Et" secondAttribute="bottom" id="bzl-Ol-J89"/>
+                            <constraint firstAttribute="bottom" secondItem="iK0-wR-6Et" secondAttribute="bottom" constant="150" id="bzl-Ol-J89"/>
                             <constraint firstItem="GLz-9x-5NF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="gGg-eC-QpD"/>
                             <constraint firstItem="GLz-9x-5NF" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="100" id="lfz-sX-vj7"/>
                         </constraints>
@@ -113,6 +127,7 @@
                     <tabBarItem key="tabBarItem" title="TODAY" image="minus" catalog="system" selectedImage="minus" id="NSL-s0-bEp"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="createTodoButton" destination="DA0-Ey-oGU" id="hd6-oL-4Cr"/>
                         <outlet property="tableView" destination="iK0-wR-6Et" id="0LC-e3-glg"/>
                         <outlet property="titleLabel" destination="LYc-36-hnm" id="gmE-GK-vJX"/>
                         <outlet property="todayDateLabel" destination="Fn8-BP-yQY" id="G4r-yc-w6n"/>

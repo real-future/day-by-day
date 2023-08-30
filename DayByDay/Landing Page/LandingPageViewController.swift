@@ -74,17 +74,6 @@ class LandingPageViewController: UIViewController {
             imageView.isUserInteractionEnabled = true
             self.view.addSubview(imageView)
             
-            //블러효과 : dark
-            let blurEffect = UIBlurEffect(style: .dark)
-            //블러효과 화면 생성
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            //블러효과 투명도
-            blurEffectView.alpha = 0.2
-            //블러효과 크기는 화면에 가득 차도록
-            blurEffectView.frame = backgroundImageView.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            //블러효과 추가하기
-            backgroundImageView.addSubview(blurEffectView)
             
             // UserDefaults에서 저장된 배경 이미지 URL을 불러옴
             if let savedBackgroundImageUrl = UserDefaults.standard.string(forKey: "selectedBackgroundImage") {

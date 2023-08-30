@@ -29,8 +29,11 @@ class MainViewController: UITabBarController {
         
         // 선택됐을 때의 아이콘 색상
         self.tabBar.tintColor = UIColor.white
+        
+
+        }
     }
-}
+
 
 
 
