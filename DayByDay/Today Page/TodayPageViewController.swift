@@ -48,7 +48,7 @@ class TodayPageViewController: UIViewController {
         
         todayDateLabel.text = dateFormatter()
         todayDateLabel.font = UIFont.systemFont(ofSize: 25, weight: .light)
-        todayDateLabel.textColor = .white
+        todayDateLabel.textColor = .white.withAlphaComponent(0.6)
         
         createTodoButton.setTitle("Add a Task", for: .normal)
         createTodoButton.setTitleColor(UIColor.white, for: .normal)
@@ -67,7 +67,7 @@ class TodayPageViewController: UIViewController {
             createTodoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
-        setupBackground()
+        setupBackground(for: self)
     }
     
     @IBAction func pressedCreateButton(_ sender: UIButton) {
@@ -123,25 +123,7 @@ class TodayPageViewController: UIViewController {
         }
     }
     
-    func setupBackground() {
-        if let selectedBackgroundImageURL = UserDefaults.standard.string(forKey: "selectedBackgroundImage") {
-            print("Selected background URL: \(selectedBackgroundImageURL)") // 로그 추가
-            let url = URL(string: selectedBackgroundImageURL)
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                if let error = error {
-                    print("Data task error: \(error)") // 에러 로그
-                    return
-                }
-                if let data = data {
-                    DispatchQueue.main.async {
-                        self.view.backgroundColor = UIColor(patternImage: UIImage(data: data) ?? UIImage())
-                    }
-                }
-            }.resume()
-        } else {
-            print("No selected background image in UserDefaults.") // 로그 추가
-        }
-    }
+    
     
     func dateFormatter() -> String {
         let currentDate = Date()

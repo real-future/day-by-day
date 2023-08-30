@@ -79,6 +79,23 @@ final class CoreDataManager {
             }
         }
     
+    // 월별로 데이터를 분리
+    func fetchMonthlyData() -> [String: [TodoData]] {
+        var sections: [String: [TodoData]] = [:]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM"
+        
+        for todo in todoList {
+            if let date = todo.date {
+                let sectionTitle = dateFormatter.string(from: date)
+                if sections[sectionTitle] == nil {
+                    sections[sectionTitle] = []
+                }
+                sections[sectionTitle]?.append(todo)
+            }
+        }
+        return sections
+    }
     
     //    func getTodoListFromCoreData() -> [TodoData] {
     //        var todoList: [TodoData] = []
