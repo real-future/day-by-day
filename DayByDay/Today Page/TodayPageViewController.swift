@@ -35,7 +35,7 @@ class TodayPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         todoDataManager.fetchData()
-        tableView.reloadData()
+    
     }
     
     
