@@ -35,7 +35,7 @@ class TodayPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         todoDataManager.fetchData()
-    
+        
     }
     
     
@@ -172,7 +172,7 @@ extension TodayPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! TodayTableViewCell
         let todoData = todoDataManager.todoList[indexPath.row]
-    
+        
         
         cell.isCompletedHandler = { [weak self] isSelected in
             self?.todoDataManager.saveTodoData(isCompleted: isSelected, index: indexPath.row, completion: {
@@ -190,12 +190,25 @@ extension TodayPageViewController: UITableViewDataSource {
 
 extension TodayPageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-               // 코어 데이터에서 삭제
-               todoDataManager.deleteTodoData(at: indexPath.row) {
-                   // 테이블 뷰에서 삭제
-                   tableView.deleteRows(at: [indexPath], with: .automatic)
-               }
-           }
-       }
+        if editingStyle == .delete {
+            
+            // 알림 창 설정
+            let deleteAlert = UIAlertController(title: "Conform Delete", message: "Are you sure you want to delete me??", preferredStyle: .alert)
+            
+            // 취소 버튼
+            deleteAlert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+            
+            // 확인 버튼
+            deleteAlert.addAction(UIAlertAction(title: "delete", style: .default, handler: { (_) in
+                // Core Data에서 삭제
+                self.todoDataManager.deleteTodoData(at: indexPath.row) {
+                    // 테이블 뷰에서 삭제
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+            }))
+            
+            // 알림 창 표시
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
+    }
 }
