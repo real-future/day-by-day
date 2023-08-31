@@ -32,6 +32,8 @@ final class CoreDataManager {
         let context = appDelegate.persistentContainer.viewContext
         do {
             self.todoList = try context.fetch(fetchRequest)
+            print("Fetched Data: \(self.todoList)")
+
         } catch {
             print(error)
         }
@@ -92,28 +94,26 @@ final class CoreDataManager {
         }
     }
     
-    func deleteTodoData(at index: Int, completion: @escaping () -> Void) {
-            let context = appDelegate.persistentContainer.viewContext
+    func deleteTodoData(with id: UUID, completion: @escaping () -> Void) {
+        let context = appDelegate.persistentContainer.viewContext
 
-            // 인덱스에 위치한 TodoData를 가져옴
-            let todoDataToDelete = todoList[index]
-            
+        if let index = todoList.firstIndex(where: { $0.id == id }) {
             // 해당 TodoData를 Core Data의 Context에서 삭제
+            let todoDataToDelete = todoList[index]
             context.delete(todoDataToDelete)
-            
-            // todoList 배열에서도 해당 TodoData를 삭제
-            todoList.remove(at: index)
-            
-            // Context에 변경이 있을 경우 저장
-            if context.hasChanges {
-                do {
-                    try context.save()
-                    completion() // 완료 후 실행할 작업 
-                } catch {
-                    print(error)
-                }
+
+            do {
+                // Context에 변경이 있을 경우 저장
+                try context.save()
+                // todoList 배열에서도 해당 TodoData를 삭제
+                todoList.remove(at: index)
+                completion()  // 완료 후 실행할 작업
+            } catch {
+                print(error)
             }
         }
+    }
+    
     
 
     

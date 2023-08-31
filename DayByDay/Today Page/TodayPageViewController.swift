@@ -21,22 +21,48 @@ class TodayPageViewController: UIViewController {
     //데이터매니저
     let todoDataManager = CoreDataManager.shared
     
+    var todayTodoList = [TodoData]()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupTableView()
         
-        //데이터 갖고 오면 reload하는 것이 일반적인 흐름
         todoDataManager.fetchData()
+        print("todoDataManager.todoList: \(todoDataManager.todoList)")  //디버깅
         tableView.reloadData()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        print("viewWillAppear called")  // 디버깅
+
+
         todoDataManager.fetchData()
         
+        // 오늘 날짜를 구하기
+        let today = Calendar.current.startOfDay(for: Date())
+        
+        print("todayTodoList before filtering: \(todayTodoList)")  //디버깅
+
+        
+        // 오늘의 todo만 필터링
+        todayTodoList = todoDataManager.todoList.filter { todo in
+            guard let todoDate = todo.date else { return false }
+            let todoStartOfDay = Calendar.current.startOfDay(for: todoDate)
+            return todoStartOfDay == today
+        }
+        
+        print("todayTodoList after filtering: \(todayTodoList)")  //디버깅
+
+        
+        // 화면 갱신
+        tableView.reloadData()
     }
+    
     
     
     
@@ -71,6 +97,7 @@ class TodayPageViewController: UIViewController {
     }
     
     @IBAction func pressedCreateButton(_ sender: UIButton) {
+        print("pressedCreateButton called")  // 디버깅
         let addAlert = UIAlertController(title: "Add a Task", message: "", preferredStyle: .alert)
         addAlert.addTextField {(textField:UITextField) in textField.placeholder = "20 characters or less"}
         
@@ -94,15 +121,22 @@ class TodayPageViewController: UIViewController {
             let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
             appDelegate.saveContext()
             
-            // 새로운 Todo 항목이 추가되었음을 알리는 Notification 발송
-                NotificationCenter.default.post(name: NSNotification.Name("newTodoItemAdded"), object: nil)
             
-            self.setupTableView()
             
             //저장 누르고 알럿뷰 내려간 뒤에 화면이 업데이트 되어야 하니까 아래의 코드 추가
             self.todoDataManager.fetchData()
+            print("Data fetched after adding new todo: \(self.todoDataManager.todoList)")  //디버깅
+            
+            //🔴🔴🔴🔴🔴🔴🔴🔴연결다리
+            self.todayTodoList = self.todoDataManager.todoList
+            
             //화면 갱신
             self.tableView.reloadData()
+            print("Table reloaded after adding new todo")  //디버깅
+            
+            // 새로운 Todo 항목이 추가되었음을 알리는 Notification 발송
+            NotificationCenter.default.post(name: NSNotification.Name("newTodoItemAdded"), object: nil)
+            self.setupTableView()
         }
         
         addAlert.addAction(cancel)
@@ -151,12 +185,12 @@ class TodayPageViewController: UIViewController {
 extension TodayPageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoDataManager.todoList.count
+        return todayTodoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! TodayTableViewCell
-        let todoData = todoDataManager.todoList[indexPath.row]
+        let todoData = todayTodoList[indexPath.row]  // 필터링된 배열에서 todo 가져오기
         
         
         cell.isCompletedHandler = { [weak self] isSelected in
@@ -186,8 +220,10 @@ extension TodayPageViewController: UITableViewDelegate {
             // 확인 버튼
             deleteAlert.addAction(UIAlertAction(title: "delete", style: .default, handler: { (_) in
                 // Core Data에서 삭제
-                self.todoDataManager.deleteTodoData(at: indexPath.row) {
+                let todoToBeDeleted = self.todayTodoList[indexPath.row]
+                self.todoDataManager.deleteTodoData(with: todoToBeDeleted.id) {
                     // 테이블 뷰에서 삭제
+                    self.todayTodoList.remove(at: indexPath.row) // 이렇게 해서 todayTodoList도 업데이트해 줍니다.
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                 }
             }))
