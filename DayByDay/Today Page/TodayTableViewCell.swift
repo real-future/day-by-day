@@ -51,7 +51,7 @@ class TodayTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         self.backgroundColor = UIColor.clear
-        self.cellBoxView.backgroundColor = .white.withAlphaComponent(0.2)
+        self.cellBoxView.backgroundColor = .white.withAlphaComponent(0.1)
         self.cellBoxView.layer.cornerRadius = 5
         
         self.checkButton.isSelected = isCompleted
