@@ -94,6 +94,9 @@ class TodayPageViewController: UIViewController {
             let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
             appDelegate.saveContext()
             
+            // 새로운 Todo 항목이 추가되었음을 알리는 Notification 발송
+                NotificationCenter.default.post(name: NSNotification.Name("newTodoItemAdded"), object: nil)
+            
             self.setupTableView()
             
             //저장 누르고 알럿뷰 내려간 뒤에 화면이 업데이트 되어야 하니까 아래의 코드 추가

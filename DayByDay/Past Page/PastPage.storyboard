@@ -37,7 +37,40 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HoC-1r-YvE" id="5nW-v5-0bo">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zar-9a-seL">
+                                                    <rect key="frame" x="16" y="8" width="361" height="133"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWV-Ys-b03">
+                                                            <rect key="frame" x="8" y="8" width="345" height="117"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ozc-Z5-OBh"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="CWV-Ys-b03" firstAttribute="top" secondItem="Zar-9a-seL" secondAttribute="top" constant="8" id="dD7-Y3-Bhy"/>
+                                                        <constraint firstItem="CWV-Ys-b03" firstAttribute="leading" secondItem="Zar-9a-seL" secondAttribute="leading" constant="8" id="hQs-JI-96l"/>
+                                                        <constraint firstAttribute="bottom" secondItem="CWV-Ys-b03" secondAttribute="bottom" constant="8" id="kbD-qf-aep"/>
+                                                        <constraint firstAttribute="trailing" secondItem="CWV-Ys-b03" secondAttribute="trailing" constant="8" id="n5t-h0-oau"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Zar-9a-seL" firstAttribute="top" secondItem="5nW-v5-0bo" secondAttribute="top" constant="8" id="99o-fi-9iV"/>
+                                                <constraint firstItem="Zar-9a-seL" firstAttribute="leading" secondItem="5nW-v5-0bo" secondAttribute="leading" constant="16" id="HjP-hl-Td8"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zar-9a-seL" secondAttribute="trailing" constant="16" id="rfb-kf-Ea8"/>
+                                                <constraint firstAttribute="bottom" secondItem="Zar-9a-seL" secondAttribute="bottom" constant="8" id="zHi-BT-fNx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellView" destination="Zar-9a-seL" id="Ntm-Qi-sLi"/>
+                                            <outlet property="pastTodoLabel" destination="CWV-Ys-b03" id="2RG-H1-dfV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

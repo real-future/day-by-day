@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PastPageViewController: UIViewController {
     
@@ -13,19 +14,35 @@ class PastPageViewController: UIViewController {
     @IBOutlet weak var PastTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var monthlyTodos: [String: [TodoData]] = [:] // 월별로 분리된 Todo 데이터
+    
+    var dailyTodos = [String: [TodoData]]()
+    var monthlyTodos = [String: [TodoData]]()
     let todoDataManager = CoreDataManager.shared // Core Data Manager 인스턴스
     
-    
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        setUI()
-        
-        
+            super.viewDidLoad()
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.backgroundColor = UIColor.clear // 배경 투명하게
+            dailyTodos = CoreDataManager.shared.fetchDailyData()
 
+            // Observer 등록
+            NotificationCenter.default.addObserver(self, selector: #selector(refreshTodoList), name: NSNotification.Name("newTodoItemAdded"), object: nil)
+
+            setUI()
+        }
+    
+    // Observer가 수신하는 메소드
+        @objc func refreshTodoList() {
+            todoDataManager.fetchData()
+            monthlyTodos = todoDataManager.fetchMonthlyData()
+            dailyTodos = CoreDataManager.shared.fetchDailyData() // 새로운 항목을 반영하기 위해 dailyTodos도 업데이트
+            tableView.reloadData()
+        }
+
+    // 메모리 누수를 방지하기 위해 observer를 제거
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("newTodoItemAdded"), object: nil)
     }
     
     
@@ -34,27 +51,29 @@ class PastPageViewController: UIViewController {
         PastTitleLabel.textColor = .white
         PastTitleLabel.font = .boldSystemFont(ofSize: 35)
         setupBackground(for: self)
+        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        todoDataManager.fetchData()
-        monthlyTodos = todoDataManager.fetchMonthlyData()
-        tableView.reloadData()
+            super.viewWillAppear(animated)
+            todoDataManager.fetchData()
+            monthlyTodos = todoDataManager.fetchMonthlyData()
+            dailyTodos = CoreDataManager.shared.fetchDailyData() // viewWillAppear에서도 업데이트
+            tableView.reloadData()
+        }
     }
-}
 
 extension PastPageViewController: UITableViewDataSource {
     
-  
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return monthlyTodos.keys.count
+        return dailyTodos.keys.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(monthlyTodos.keys).sorted()[section]
+        return Array(dailyTodos.keys).sorted()[section]
     }
     
     //헤더 타이틀 컬러 변경
@@ -66,25 +85,26 @@ extension PastPageViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let month = Array(monthlyTodos.keys).sorted()[section]
-        return monthlyTodos[month]?.count ?? 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! PastPageTableViewCell
         cell.backgroundColor = UIColor.clear
-        let month = Array(monthlyTodos.keys).sorted()[indexPath.section]
-        let todoData = monthlyTodos[month]?[indexPath.row]
+        let day = Array(dailyTodos.keys).sorted()[indexPath.section]
         
-//        cell.todoTitleLabel.text = todoData?.title
-       
+        if let todosForDay = dailyTodos[day] {
+            cell.setCombinedText(with: todosForDay)
+        }
+        cell.configureUI()
+        
         return cell
     }
 }
 
 // MARK: - UITableViewDelegate
 extension PastPageViewController: UITableViewDelegate {
-    // 필요하면 여기에 delegate 메서드를 추가
+    
 }
 
 
