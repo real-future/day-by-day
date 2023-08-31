@@ -96,6 +96,7 @@ extension PastPageViewController: UITableViewDataSource {
         if let todosForDay = dailyTodos[day] {
             cell.setCombinedText(with: todosForDay)
         }
+        cell.selectionStyle = .none
         cell.configureUI()
         
         return cell
