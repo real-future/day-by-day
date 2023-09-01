@@ -74,7 +74,7 @@ extension PastPageViewController: UITableViewDataSource {
     
     //섹션별 헤더 타이틀 반환
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(dailyTodos.keys).sorted()[section]
+        return Array(dailyTodos.keys).sorted(by: >)[section]
     }
     
     
@@ -87,7 +87,7 @@ extension PastPageViewController: UITableViewDataSource {
     }
     
     
-    //매일 한 개의 셀이므로 1
+    //행 수, 매일 한 개의 셀이므로 1
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -97,7 +97,7 @@ extension PastPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! PastPageTableViewCell
         cell.backgroundColor = UIColor.clear
-        let day = Array(dailyTodos.keys).sorted()[indexPath.section]
+        let day = Array(dailyTodos.keys).sorted(by: >)[indexPath.section]
         
         //해당 일자의 할 일을 셀에 설정
         if let todosForDay = dailyTodos[day] {
