@@ -12,10 +12,16 @@
 - 23.08.28 ~ 23.09.01 
 
 
+# ⚪️ 앱 구조
+
+<img width="843" alt="Screenshot 2023-09-01 at 1 19 29 PM" src="https://github.com/real-future/day-by-day/assets/85066307/874e395a-2d53-43d0-afed-59744e8d53a1">
+
+
+
 
 # ⚪️ 구현 과제
 
-**<주어진 과제>**
+### **<주어진 과제>**
 
 - CRUD: CoreData를 통하여 구현하였습니다.
 
@@ -31,7 +37,7 @@
 - MVC 패턴
 
 
-**<개인 도전 과제>**
+### **<개인 도전 과제>**
 
 - 알럿뷰 글자수 제한, 애니메이션
 
@@ -51,7 +57,7 @@
   
 
 # ⚪️ 주요 화면
-**<런치 스크린>**
+### **<런치 스크린>**
 
 ![런치스크린](https://github.com/real-future/day-by-day/assets/85066307/90350a62-c926-4936-8936-433d56df089c)
 
@@ -60,7 +66,7 @@
 ![ChooseYourMood](https://github.com/real-future/day-by-day/assets/85066307/7c862402-6365-4267-9618-493a4ebec567)
 
 
-**<TODAY페이지>**
+### **<TODAY페이지>**
 
 ![TodayPage_create1](https://github.com/real-future/day-by-day/assets/85066307/bbf5612d-f370-4fbc-9ae7-7a22bbdddabf)
 ![TodayPage_delete](https://github.com/real-future/day-by-day/assets/85066307/8a2d4867-b55b-4964-83bf-b2f0dd971877)
@@ -68,7 +74,7 @@
 ![TodayPage_limit](https://github.com/real-future/day-by-day/assets/85066307/85fb15bd-2c94-456f-95a3-c3a6e52d7206)
 
 
-**<PAST페이지>**
+### **<PAST페이지>**
 
 ![DonePage](https://github.com/real-future/day-by-day/assets/85066307/521b4c2f-1c0f-4b8a-b433-ef4d3f877000)
 ![DonePage_past](https://github.com/real-future/day-by-day/assets/85066307/6bb8d502-9b53-495c-9c30-0df6a99a93b9)
