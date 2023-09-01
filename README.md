@@ -61,12 +61,17 @@
 
 ![런치스크린](https://github.com/real-future/day-by-day/assets/85066307/90350a62-c926-4936-8936-433d56df089c)
 
-**<ChooseYourMood페이지>**
+### **<ChooseYourMood페이지>**
+- 메모앱 배경 테마를 고를 수 있습니다. 
+- 새벽/석양/밤을 상징하는 그라데이션 이미지입니다.
+- UserDefault가 적용되어 있기 때문에 앱을 종료해도 사용자가 고른 색이 저장되어 계속 유지됩니다. 
 
 ![ChooseYourMood](https://github.com/real-future/day-by-day/assets/85066307/7c862402-6365-4267-9618-493a4ebec567)
 
 
 ### **<TODAY페이지>**
+- 오늘 날짜의 할 일 목록만 보여줍니다.
+- 날짜가 지난 항목은 PAST 페이지에서 조회 가능합니다. 
 
 ![TodayPage_create1](https://github.com/real-future/day-by-day/assets/85066307/bbf5612d-f370-4fbc-9ae7-7a22bbdddabf)
 ![TodayPage_delete](https://github.com/real-future/day-by-day/assets/85066307/8a2d4867-b55b-4964-83bf-b2f0dd971877)
@@ -75,6 +80,8 @@
 
 
 ### **<PAST페이지>**
+- header 카테고리는 날짜를 기준으로 분리되어 있습니다.
+- - 최신 날짜의 항목은 상단에 생성되도록 구현하였습니다. 
 
 ![DonePage](https://github.com/real-future/day-by-day/assets/85066307/521b4c2f-1c0f-4b8a-b433-ef4d3f877000)
 ![DonePage_past](https://github.com/real-future/day-by-day/assets/85066307/6bb8d502-9b53-495c-9c30-0df6a99a93b9)
