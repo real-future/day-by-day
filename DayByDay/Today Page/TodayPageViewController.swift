@@ -122,8 +122,17 @@ class TodayPageViewController: UIViewController {
             self.todoDataManager.fetchData()
             print("Data fetched after adding new todo: \(self.todoDataManager.todoList)")  //디버깅
             
-            //🔴🔴🔴🔴🔴🔴🔴🔴연결다리
-            self.todayTodoList = self.todoDataManager.todoList
+            
+            // 오늘 날짜 구하기
+            let today = Calendar.current.startOfDay(for: Date())
+            
+            // 오늘의 todo만 필터링
+            self.todayTodoList = self.todoDataManager.todoList.filter { todo in
+                guard let todoDate = todo.date else { return false }
+                let todoStartOfDay = Calendar.current.startOfDay(for: todoDate)
+                return todoStartOfDay == today
+            }
+            
             
             //화면 갱신
             self.tableView.reloadData()
