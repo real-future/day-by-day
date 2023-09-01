@@ -8,7 +8,7 @@
 import UIKit
 
 class PastPageTableViewCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var pastTodoLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
@@ -17,27 +17,32 @@ class PastPageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    
+    //UI설정
     func configureUI() {
         cellView.layer.cornerRadius = 5
         cellView.backgroundColor = .white.withAlphaComponent(0.1)
     }
     
+    
     //취소선
     func drawStrike() {
         let attributeString = NSMutableAttributedString(string: self.pastTodoLabel.text ?? "")
-            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-            self.pastTodoLabel.attributedText = attributeString
+        
+        //취소선 스타일
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        self.pastTodoLabel.attributedText = attributeString
     }
     
+    
+    //여러 할 일을 하나의 텍스트로 결합
     func setCombinedText(with todos: [TodoData]) {
         let fullAttributedString = NSMutableAttributedString()
         
@@ -46,9 +51,10 @@ class PastPageTableViewCell: UITableViewCell {
             let attributedString: NSAttributedString
             let isLastItem = index == todos.count - 1 // 마지막 항목인지 확인
             
+            //할 일 완료된 경우와 그렇지 않은 경우
             if todoData.isCompleted {
                 attributedString = NSAttributedString(
-                    string: content + (isLastItem ? "" : "\n"), // 마지막 항목이면 \n 를 추가하지 않습니다.
+                    string: content + (isLastItem ? "" : "\n"), //마지막 항목이면 \n 를 추가x
                     attributes: [
                         NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
                         NSAttributedString.Key.foregroundColor: UIColor.white // Text color set to white
@@ -56,15 +62,17 @@ class PastPageTableViewCell: UITableViewCell {
                 )
             } else {
                 attributedString = NSAttributedString(
-                    string: content + (isLastItem ? "" : "\n"), // 마지막 항목이면 \n 를 추가하지 않습니다.
+                    string: content + (isLastItem ? "" : "\n"), // 마지막 항목이면 \n 를 추가x
                     attributes: [
-                        NSAttributedString.Key.foregroundColor: UIColor.white // Text color set to white
+                        NSAttributedString.Key.foregroundColor: UIColor.white
                     ]
                 )
             }
+            //전체 문자열에 추가
             fullAttributedString.append(attributedString)
         }
-    
+        
+        //레이블에 적용
         self.pastTodoLabel.attributedText = fullAttributedString
     }
 }

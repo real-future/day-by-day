@@ -5,17 +5,15 @@
 //  Created by FUTURE on 2023/08/28.
 //
 
-//(미션)유저디폴트 - 코어데이터를 꼭 활용해보고 싶어서 과제는 아니지만 사용했습니다. 따라서 유저디폴트는 랜딩페이지의 컬러theme기능에 적용해보았습니다.
 
 import UIKit
 
 class LandingPageViewController: UIViewController {
     
-    //🔴클로저로 바꾸기~~!!
-    //UI 요소 인스턴스 만들기
+    
+    //UI 요소
     let backgroundImageView = UIImageView()
     let titleLabel = UILabel()
-    //let colorTitleLabel = UILabel()✅ 시간 나면 꼭 구현해보기
     let colorsimageViews = [UIImageView(), UIImageView(), UIImageView()]
     let colorThemeModel = ColorThemeModel()
     let nextButton = UIButton()
@@ -30,7 +28,6 @@ class LandingPageViewController: UIViewController {
         setupImageViews()
         setupNextButton()
         setupConstraints()
-        
     }
     
     
@@ -78,7 +75,6 @@ class LandingPageViewController: UIViewController {
                 print("Saved background image URL: \(savedBackgroundImageUrl)")  // 디버그 출력
                 loadImage(for: backgroundImageView, with: savedBackgroundImageUrl)
             }
-            
         }
     }
     

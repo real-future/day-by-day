@@ -17,7 +17,4 @@ class SetupBackgroundImage {
         //화면에 추가. 여기서 self는 ViewController 인스턴스
         view.addSubview(imageView)
     }
-    
-    
-    
 }

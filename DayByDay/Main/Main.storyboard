@@ -34,7 +34,6 @@
                     <connections>
                         <segue destination="qq7-L6-iHn" kind="relationship" relationship="viewControllers" id="BJX-Sb-6dw"/>
                         <segue destination="nhh-Li-jxw" kind="relationship" relationship="viewControllers" id="mP5-Ht-u0w"/>
-                        <segue destination="SoW-th-nAu" kind="relationship" relationship="viewControllers" id="Fmx-Uu-Ib3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVc-ey-ALX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -55,7 +54,7 @@
         <!--FuturePageViewController-->
         <scene sceneID="tTI-GA-Ia0">
             <objects>
-                <viewControllerPlaceholder storyboardName="FuturePage" referencedIdentifier="FuturePageViewController" id="SoW-th-nAu" sceneMemberID="viewController">
+                <viewControllerPlaceholder referencedIdentifier="FuturePageViewController" id="SoW-th-nAu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="tYV-di-Rh3"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PmJ-3F-31f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
