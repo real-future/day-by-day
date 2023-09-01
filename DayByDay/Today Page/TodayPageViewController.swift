@@ -93,11 +93,14 @@ class TodayPageViewController: UIViewController {
     
     
     @IBAction func pressedCreateButton(_ sender: UIButton) {
-        print("pressedCreateButton called")  // 디버깅
-        //Alert뷰 생성
-        let addAlert = UIAlertController(title: "Add a Task", message: "", preferredStyle: .alert)
-        //텍스트 필드 추가
-        addAlert.addTextField {(textField:UITextField) in textField.placeholder = "20 characters or less"}
+        print("pressedCreateButton called") // 디버깅을 위한 출력
+            let addAlert = UIAlertController(title: "Add a Task", message: "Please enter within 28 characters", preferredStyle: .alert)
+            
+            // 텍스트 필드를 추가하고, 해당 텍스트 필드의 델리게이트를 self로 설정합니다.
+            addAlert.addTextField {(textField: UITextField) in
+                textField.placeholder = "28 characters or less"
+                textField.delegate = self // 클래스가 UITextFieldDelegate 프로토콜을 준수한다고 가정
+            }
         
         //취소, 저장 버튼 액션 설정
         let cancel = UIAlertAction(title: "cancel", style: .default)
@@ -234,5 +237,38 @@ extension TodayPageViewController: UITableViewDelegate {
             // 알림 창 표시
             self.present(deleteAlert, animated: true, completion: nil)
         }
+    }
+}
+
+
+extension TodayPageViewController: UITextFieldDelegate {
+    // 텍스트 필드의 텍스트가 변경될 때 호출
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        //업데이트 된 텍스트의 길이를 확인
+        if updatedText.count > 28 {
+            //흔드는 애니메이션을 적용, 테두리 색상을 red
+            shakeTextField(textField)
+            return false
+        }
+        return true
+    }
+    
+    
+    //텍스트 필드 애니메이션-흔들기
+    func shakeTextField(_ textField: UITextField) {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.duration = 0.6
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0]
+        textField.layer.add(animation, forKey: "shake")
+        
+        // 테두리 색상 red
+        textField.layer.borderColor = UIColor.red.cgColor
+        textField.layer.borderWidth = 1.0
     }
 }
