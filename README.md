@@ -14,7 +14,7 @@
 
 # ⚪️ 앱 구조
 
-<img width="843" alt="Screenshot 2023-09-01 at 1 19 29 PM" src="https://github.com/real-future/day-by-day/assets/85066307/874e395a-2d53-43d0-afed-59744e8d53a1">
+<img width="908" alt="Screenshot 2023-09-03 at 10 53 27 PM" src="https://github.com/real-future/day-by-day/assets/85066307/1e4eba1f-0095-42a7-96e4-723b9080d136">
 
 
 
