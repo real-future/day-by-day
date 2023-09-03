@@ -74,10 +74,10 @@
 - 날짜가 지난 항목은 PAST 페이지에서 조회 가능합니다. 
 
 
-<img src="https://github.com/real-future/day-by-day/assets/85066307/bbf5612d-f370-4fbc-9ae7-7a22bbdddabf" width="230"/>
-<img src="https://github.com/real-future/day-by-day/assets/85066307/8a2d4867-b55b-4964-83bf-b2f0dd971877" width="230"/>
-<img src="https://github.com/real-future/day-by-day/assets/85066307/ca5f90ea-6b8b-49fb-a0df-6bd3ce45573f" width="230"/>
-<img src="https://github.com/real-future/day-by-day/assets/85066307/85fb15bd-2c94-456f-95a3-c3a6e52d7206" width="230"/>
+<img src="https://github.com/real-future/day-by-day/assets/85066307/bbf5612d-f370-4fbc-9ae7-7a22bbdddabf" width="210"/>
+<img src="https://github.com/real-future/day-by-day/assets/85066307/8a2d4867-b55b-4964-83bf-b2f0dd971877" width="210"/>
+<img src="https://github.com/real-future/day-by-day/assets/85066307/ca5f90ea-6b8b-49fb-a0df-6bd3ce45573f" width="210"/>
+<img src="https://github.com/real-future/day-by-day/assets/85066307/85fb15bd-2c94-456f-95a3-c3a6e52d7206" width="210"/>
 
 
 
